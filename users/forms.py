@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-
+from .models import Interest
 
 class RegisterForm(UserCreationForm):
     """
@@ -25,3 +25,13 @@ class LoginForm(AuthenticationForm):
     class Meta:
         model = User
         fields = ['username', 'password']
+
+class InterestForm(forms.ModelForm):
+    """
+    A form for creating and editing Interest objects.
+    """
+
+    class Meta:
+        model = Interest
+        fields = ['message']
+        

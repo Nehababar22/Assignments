@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Interests</title>
+    <style>
+        /* Basic styling for the body */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            padding: 20px;
+        }
+
+        /* Styling for the container */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styling for the main heading */
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Styling for each interest item */
+        .interest-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styling for interest actions section */
+        .interest-actions {
+            margin-top: 10px;
+        }
+
+        /* Styling for buttons */
+        button {
+            background-color: #4CAF50; 
+            color: #ffffff;            
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        /* Hover effect for buttons */
+        button:hover {
+            background-color: #45a049; 
+        }
+
+        /* Styling for reject button */
+        .button-reject {
+            background-color: #f44336; 
+        }
+
+        /* Hover effect for reject button */
+        .button-reject:hover {
+            background-color: #d32f2f; 
+        }
+
+        /* Styling for back link */
+        .back-link {
+            margin-top: 20px;
+        }
+
+        /* Styling for back link text */
+        .back-link a {
+            color: #4CAF50; 
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Hover effect for back link */
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Main heading for the page -->
+        <h1>Received Interests</h1>
+
+        <!-- Loop through interests and display each one -->
+        {% for interest in interests %}
+            <div class="interest-item">
+                <p><strong>From:</strong> {{ interest.sender.username }}</p>
+                <!-- Link to respond to the interest -->
+                <a href="{% url 'interest-list' %}">
+                    <button>Respond</button>
+                </a>
+            </div>
+        {% empty %}
+            <!-- Message displayed if no interests are available -->
+            <p>No interest messages.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

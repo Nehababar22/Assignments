@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interest Messages</title>
+    <style>
+        /* Basic styling for the body */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Styling for the container holding the interest list */
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styling for the heading */
+        h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+
+        /* Styling for the unordered list */
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Styling for each list item */
+        li {
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #f9f9f9;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Styling for links */
+        a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Styling for the accept link */
+        .accept-link {
+            background-color: #4CAF50; /* Green */
+        }
+        .accept-link:hover {
+            background-color: #45a049;
+        }
+
+        /* Styling for the reject link */
+        .reject-link {
+            background-color: #f44336; /* Red */
+        }
+        .reject-link:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Heading for the interest list -->
+        <h2>Received Interests</h2>
+
+        <!-- Unordered list for displaying received interests -->
+        <ul>
+            {% for interest in received_interests %}
+            <li>
+                <!-- Display the sender's username and the message -->
+                {{ interest.sender.username }}: {{ interest.message }}
+
+                <div>
+                    <!-- Links for accepting or rejecting the interest -->
+                    <a href="{% url 'handle-interest' interest.id 'accept' %}" class="accept-link">Accept</a>
+                    <a href="{% url 'handle-interest' interest.id 'reject' %}" class="reject-link">Reject</a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
