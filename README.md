@@ -58,6 +58,15 @@ A Django-based chat system with user registration, login, and interest functiona
 
 ## Running Tests
 
+Make sure you have pytest and pytest-django installed.
+pip install pytest pytest-django
+
+Create a pytest.ini file in the root of your project directory:
+[pytest]
+DJANGO_SETTINGS_MODULE = chat_system.settings
+python_files = tests.py test_*.py *_tests.py
+
+
 To run tests, use the following command:
 
 ```bash
