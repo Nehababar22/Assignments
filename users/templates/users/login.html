@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        /* Basic styling for the body */
+        body {
+            background-color: #f4f4f4; 
+            font-family: Arial, sans-serif; 
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+            margin: 0; 
+        }
+        
+        /* Styling for the container */
+        .container {
+            max-width: 400px; 
+            width: 100%; 
+            background: #fff; 
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+            text-align: center; 
+        }
+        
+        /* Styling for the heading */
+        h2 {
+            margin-bottom: 20px; 
+            color: #333; 
+        }
+        
+        /* Styling for the form */
+        form {
+            display: flex; 
+            flex-direction: column; 
+        }
+        
+        /* Styling for text and password input fields */
+        input[type="text"],
+        input[type="password"] {
+            width: 100%; 
+            padding: 10px; 
+            margin-bottom: 15px; 
+            border: 1px solid #ddd; 
+            border-radius: 4px; 
+        }
+        
+        /* Styling for the submit button */
+        button {
+            background-color: #4CAF50; 
+            color: #fff; 
+            border: none; 
+            padding: 10px; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            font-size: 16px; 
+        }
+        
+        /* Hover effect for the button */
+        button:hover {
+            background-color: #45a049; 
+        }
+        
+        /* Styling for the registration link section */
+        .register-link {
+            margin-top: 10px; 
+            font-size: 14px; 
+        }
+        
+        /* Styling for the registration link */
+        .register-link a {
+            color: #4CAF50; 
+            text-decoration: none; 
+        }
+        
+        /* Hover effect for the registration link */
+        .register-link a:hover {
+            text-decoration: underline; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Heading for the login form -->
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+        <!-- Link to register if the user does not have an account -->
+        <div class="register-link">
+            <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
+        </div>
+    </div>
+</body>
+</html>
