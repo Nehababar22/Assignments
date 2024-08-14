@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User List</title>
+    <style>
+        /* Basic styling for the body */
+        body {
+            background-color: #f0f2f5;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Styling for the container */
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Styling for the heading */
+        h2 {
+            background-color: #4CAF50;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 22px;
+            font-weight: normal;
+        }
+
+        /* Styling for the unordered list */
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Styling for list items */
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Styling for buttons as links */
+        .button-link {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            margin-left: 10px;
+        }
+
+        /* Hover effect for buttons */
+        .button-link:hover {
+            background-color: #45a049;
+            color: #ffffff;
+        }
+
+        /* Styling for the header section */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header section with welcome message and logout button -->
+        <div class="header">
+            <h1>Welcome, {{ user.username }}</h1>
+            <a href="{% url 'logout-user' %}" class="button-link">Logout</a>
+        </div>
+        <h2>Users</h2>
+        <ul>
+            {% for user in users %}
+            <li>
+                {{ user.username }}
+                <!-- Link to send interest and view interest-->
+                <a href="{% url 'send-interest' user.id %}" class="button-link">Send Interest</a>
+                <a href="{% url 'view-interests' %}" class="button-link">View Interest</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
