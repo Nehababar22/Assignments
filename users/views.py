@@ -139,3 +139,9 @@ def handle_interest(request, interest_id, action):
     else:
         # Handle invalid action
         return HttpResponseBadRequest('Invalid action')
+
+def chatPage(request, *args, **kwargs):
+    if not request.user.is_authenticated:
+        return redirect("login")
+    context = {}
+    return render(request, "chat/chatPage.html", context)
