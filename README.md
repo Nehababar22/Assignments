@@ -8,7 +8,7 @@ A Django-based chat system with user registration, login, and interest functiona
 
     ```bash
     git clone https://github.com/Nehababar22/Assignments.git
-    cd chat_system
+    cd ChatSystem
     ```
 
 2. **Create a Virtual Environment:**
