@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Send Interest</title>
+    <style>
+        /* Basic styling for the body */
+        body {
+            background-color: #f0f2f5;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Styling for the container */
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Styling for the heading */
+        h2 {
+            background-color: #4CAF50; 
+            color: #ffffff;            
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 22px;
+            font-weight: normal;
+        }
+
+        /* Styling for the form */
+        form {
+            margin-top: 20px;
+        }
+
+        /* Styling for form group */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        /* Styling for form labels */
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        /* Styling for form inputs and textarea */
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        /* Styling for the submit button */
+        button {
+            background-color: #4CAF50; 
+            color: #ffffff;           
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Button hover effect */
+        button:hover {
+            background-color: #45a049; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Heading for the send interest page -->
+        <h2>Send Interest to {{ receiver.username }}</h2>
+
+        <!-- Form for sending interest -->
+        <form method="post" action="{% url 'send-interest' receiver.id %}">
+            {% csrf_token %}
+            <!-- Render form fields as paragraphs -->
+            {{ form.as_p }}
+            <!-- Submit button for sending the interest -->
+            <button type="submit">Send Interest</button>
+        </form>
+    </div>
+</body>
+</html>
